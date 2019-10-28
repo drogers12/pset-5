@@ -21,16 +21,16 @@ public class ProblemSet5 {
     public static void main(String[] args) {
       ProblemSet5 ps = new ProblemSet5();
 
-      ps.surroundMe(null, null);
-      ps.endsMeet();
-      ps.middleMan();
-      ps.isCentered();
-      ps.countMe();
-      ps.triplets();
-      ps.addMe();
-      ps.sequence();
-      ps.intertwine();
-      ps.isPalindrome();
+      //ps.surroundMe(null, null);
+      //ps.endsMeet("qwe    rty", 4);
+      //ps.middleMan("qwertyuio");
+      ps.isCentered("qwertyuio", "rty");
+      //ps.countMe();
+      //ps.triplets();
+      //ps.addMe();
+      //ps.sequence();
+      //ps.intertwine();
+      //ps.isPalindrome();
 
     }
 
@@ -50,7 +50,6 @@ public class ProblemSet5 {
        if (out.length() == 4){
          in = out.substring(0, 2) + in + out.substring(2, 4);
        }
-       System.out.print(in);
 
       return in;
 
@@ -65,7 +64,15 @@ public class ProblemSet5 {
 
     public String endsMeet(String text, int n) {
 
-      return "";
+      if (text == null){
+        return text;
+      }
+
+      if (text.length()>=1 && text.length()<=10 && n <= text.length() && n >= 1){
+        text = text.substring(0, n) + text.substring(text.length()-n,text.length());
+      }
+
+      return text;
 
     }
 
@@ -77,7 +84,15 @@ public class ProblemSet5 {
 
     public String middleMan(String text) {
 
-      return "";
+      if (text == null){
+        return text;
+      }
+
+      if (text.length() % 2 == 1){
+        text = text.substring(0+(text.length()/2-1), 0+text.length()/2+2);
+      }
+
+      return text;
 
     }
 
@@ -90,8 +105,17 @@ public class ProblemSet5 {
 
     public boolean isCentered(String text, String target) {
 
-      return true;
+      if (text == null || target == null || text.length() % 2 == 0 || target.length() != 3) {
+        return false;
+      }
 
+      if (text.length() % 2 == 1){
+        text = text.substring(0+(text.length()/2-1), 0+text.length()/2+2);
+        if (text == target){
+          System.out.printf(text);    //WHY DOES THIS PART NEVER WORK :(((
+        }
+      }
+      return true;
     }
 
     /*
