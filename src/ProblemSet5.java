@@ -25,7 +25,7 @@ public class ProblemSet5 {
       //ps.endsMeet("qwe    rty", 4);
       //ps.middleMan("qwertyuio");
       //ps.isCentered("qwertyuio", "rty");
-      ps.countMe("ffff", 'f');
+      ps.countMe("ffff ff ff", 'f');
       //ps.triplets();
       //ps.addMe();
       //ps.sequence();
@@ -137,14 +137,13 @@ public class ProblemSet5 {
       Character.toString(suffix);
 
         for (i = 0; i < text.length(); i++){
-          if (text.endsWith(suffix)){
-            count++;
-            System.out.print(count);
+          if (Character.isSpaceChar(text.charAt(i))){
+            if (text.substring(i-1,i).equals(suffix)){
+              System.out.print("hi");
+            }
           }
         }
-  
       return -1;
-
     }
 
     /*
