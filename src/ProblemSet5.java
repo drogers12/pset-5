@@ -24,8 +24,8 @@ public class ProblemSet5 {
       //ps.surroundMe(null, null);
       //ps.endsMeet("qwe    rty", 4);
       //ps.middleMan("qwertyuio");
-      ps.isCentered("qwertyuio", "rty");
-      //ps.countMe();
+      //ps.isCentered("qwertyuio", "rty");
+      ps.countMe("ffff", 'f');
       //ps.triplets();
       //ps.addMe();
       //ps.sequence();
@@ -90,6 +90,7 @@ public class ProblemSet5 {
 
       if (text.length() % 2 == 1){
         text = text.substring(0+(text.length()/2-1), 0+text.length()/2+2);
+        System.out.printf(text);
       }
 
       return text;
@@ -111,11 +112,11 @@ public class ProblemSet5 {
 
       if (text.length() % 2 == 1){
         text = text.substring(0+(text.length()/2-1), 0+text.length()/2+2);
-        if (text == target){
-          System.out.printf(text);    //WHY DOES THIS PART NEVER WORK :(((
+        if (text.equals(target)){
+          return true;
         }
       }
-      return true;
+      return false;
     }
 
     /*
@@ -126,7 +127,23 @@ public class ProblemSet5 {
 
     public int countMe(String text, char suffix) {
 
-      return 5;
+      int i;
+      int count = 0;
+
+      if (text == null){
+        return -1;
+      }
+
+      Character.toString(suffix);
+
+        for (i = 0; i < text.length(); i++){
+          if (text.endsWith(suffix)){
+            count++;
+            System.out.print(count);
+          }
+        }
+  
+      return -1;
 
     }
 
