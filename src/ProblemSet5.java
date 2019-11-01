@@ -27,9 +27,9 @@ public class ProblemSet5 {
       //ps.isCentered("qwertyuio", "rty");
       //ps.countMe("ffff ff ff", 'f');
       //ps.triplets("hhHhllliooo");
-      ps.addMe("123f");
-      //ps.sequence();
-      //ps.intertwine();
+      //ps.addMe("123ffffffff7ff");
+      //ps.sequence("aaaabbb");
+      ps.intertwine("aaa", "bbbb");
       //ps.isPalindrome();
 
     }
@@ -181,19 +181,23 @@ public class ProblemSet5 {
       int i;
       int tempValue;
       int total = 0;
+      boolean isNumeric;
+      char iteration;
 
       if (text == null){
         return -1;
       }
 
       for (i = 0; i < text.length(); i++) {
-        tempValue = Integer.parseInt(text.substring(i, i+1));
-        total += tempValue;
+        iteration = text.charAt(i);
+        isNumeric = Character.isDigit(iteration);
+        if (isNumeric == true) {
+          tempValue = Integer.parseInt(text.substring(i, i+1));
+          total += tempValue;
+        }
       }
 
-      System.out.print(total);
-
-      return 5;
+      return total;
 
     }
 
@@ -205,7 +209,27 @@ public class ProblemSet5 {
 
     public long sequence(String text) {
 
-      return 5;
+      int count = 0;
+      int i;
+      text = text + " ";
+
+      if (text == null){
+        return -1;
+      }
+
+      for (i = 0; i < text.length()-1; i++) {
+
+        if (text.substring(i, i+1).equals(text.substring(i+1, i+2))) {
+          count += 1;
+        }else{
+          count = 0;
+        }
+
+      }
+
+      System.out.print(count);
+
+      return count;
 
     }
 
@@ -218,7 +242,25 @@ public class ProblemSet5 {
 
     public String intertwine(String a, String b) {
 
-      return "";
+      String combinedLength = a+b;
+      String combinedString = "";
+      int i;
+
+      if (a.length>b.length){
+
+      }
+
+
+      //THIS WORKS FOR IF THEY'RE THE SAME LENGTH. MAKE IT WORK IF THEY'RE DIFFERENT LENGTHS
+      for (i = 0; i < a.length(); i++) {
+        combinedString = combinedString + a.substring(i, i+1);
+        combinedString = combinedString + b.substring(i, i+1);
+      }
+
+      System.out.print(combinedString);
+
+
+      return combinedString;
 
     }
 
