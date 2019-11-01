@@ -25,9 +25,9 @@ public class ProblemSet5 {
       //ps.endsMeet("qwe    rty", 4);
       //ps.middleMan("qwertyuio");
       //ps.isCentered("qwertyuio", "rty");
-      ps.countMe("ffff ff ff", 'f');
-      //ps.triplets();
-      //ps.addMe();
+      //ps.countMe("ffff ff ff", 'f');
+      //ps.triplets("hhHhllliooo");
+      ps.addMe("123f");
       //ps.sequence();
       //ps.intertwine();
       //ps.isPalindrome();
@@ -43,11 +43,11 @@ public class ProblemSet5 {
 
     public String surroundMe(String in, String out) {
 
-      if (in == null || out == null){
+      if (in == null || out == null) {
         return in;
       }
 
-       if (out.length() == 4){
+       if (out.length() == 4) {
          in = out.substring(0, 2) + in + out.substring(2, 4);
        }
 
@@ -64,11 +64,11 @@ public class ProblemSet5 {
 
     public String endsMeet(String text, int n) {
 
-      if (text == null){
+      if (text == null) {
         return text;
       }
 
-      if (text.length()>=1 && text.length()<=10 && n <= text.length() && n >= 1){
+      if (text.length()>=1 && text.length()<=10 && n <= text.length() && n >= 1) {
         text = text.substring(0, n) + text.substring(text.length()-n,text.length());
       }
 
@@ -84,11 +84,11 @@ public class ProblemSet5 {
 
     public String middleMan(String text) {
 
-      if (text == null){
+      if (text == null) {
         return text;
       }
 
-      if (text.length() % 2 == 1){
+      if (text.length() % 2 == 1) {
         text = text.substring(0+(text.length()/2-1), 0+text.length()/2+2);
         System.out.printf(text);
       }
@@ -110,9 +110,9 @@ public class ProblemSet5 {
         return false;
       }
 
-      if (text.length() % 2 == 1){
+      if (text.length() % 2 == 1) {
         text = text.substring(0+(text.length()/2-1), 0+text.length()/2+2);
-        if (text.equals(target)){
+        if (text.equals(target)) {
           return true;
         }
       }
@@ -130,15 +130,15 @@ public class ProblemSet5 {
       int i;
       int count = 0;
 
-      if (text == null){
+      if (text == null) {
         return -1;
       }
 
       Character.toString(suffix);
 
-        for (i = 0; i < text.length(); i++){
-          if (Character.isSpaceChar(text.charAt(i))){
-            if (text.substring(i-1,i).equals(suffix)){
+        for (i = 0; i < text.length(); i++) {
+          if (Character.isSpaceChar(text.charAt(i))) {
+            if (text.substring(i-1,i).equals(suffix)) {
               System.out.print("hi");
             }
           }
@@ -154,7 +154,19 @@ public class ProblemSet5 {
 
     public int triplets(String text) {
 
-      return 5;
+      int count = 0;
+      int i;
+
+      if (text == null){
+        return -1;
+      }
+      for (i = 0; i < text.length()-2; i++) {
+        if (text.substring(i, i+1).equals(text.substring(i+1, i+2)) && text.substring(i+1, i+2).equals(text.substring(i+2, i+3))) {
+          count++;
+        }
+      }
+      System.out.print(count);
+      return count;
 
     }
 
@@ -165,6 +177,21 @@ public class ProblemSet5 {
      */
 
     public long addMe(String text) {
+
+      int i;
+      int tempValue;
+      int total = 0;
+
+      if (text == null){
+        return -1;
+      }
+
+      for (i = 0; i < text.length(); i++) {
+        tempValue = Integer.parseInt(text.substring(i, i+1));
+        total += tempValue;
+      }
+
+      System.out.print(total);
 
       return 5;
 
