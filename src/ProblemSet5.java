@@ -59,7 +59,10 @@ public class ProblemSet5 {
 
       //ps.sequence("aaaabbb");
       //ps.intertwine("aaa", "bbbb");
-      //ps.isPalindrome();
+
+      ps.isPalindrome("racecar");
+      ps.isPalindrome("Madam");
+      ps.isPalindrome(null);
 
     }
 
@@ -293,7 +296,24 @@ public class ProblemSet5 {
 
     public boolean isPalindrome(String text) {
 
-      return true;
+      if (text == null){
+        return false;
+      }
 
+
+      String reverseText = "";
+      String tempCharacter = "";
+      int i;
+
+      for (i = text.length() -1; i >=0; i--) {
+          reverseText = reverseText + text.charAt(i);
+      }
+
+      System.out.println(reverseText);
+        if (reverseText == text) {
+          System.out.println("true");
+          return true;
+        }
+        return true;
     }
 }
