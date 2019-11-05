@@ -21,15 +21,44 @@ public class ProblemSet5 {
     public static void main(String[] args) {
       ProblemSet5 ps = new ProblemSet5();
 
-      //ps.surroundMe(null, null);
-      //ps.endsMeet("qwe    rty", 4);
-      //ps.middleMan("qwertyuio");
-      //ps.isCentered("qwertyuio", "rty");
-      //ps.countMe("ffff ff ff", 'f');
-      //ps.triplets("hhHhllliooo");
-      //ps.addMe("123ffffffff7ff");
+      // ps.surroundMe("cde", "abfg");                  WORKS
+      // ps.surroundMe(null, "####");                   WORKS
+      // ps.surroundMe("abc", null);                    WORKS
+      // ps.surroundMe("abc", "123");                   WORKS
+
+
+      //ps.endsMeet("abcdefg", 2);                      WORKS
+      //ps.endsMeet(null, 2);                           WORKS
+      //ps.endsMeet("", 2);                             WORKS
+      //ps.endsMeet("abc", -1);                         WORKS
+
+      //ps.middleMan("abcdefg");                        WORKS
+      //ps.middleMan(null);                             WORKS
+      //ps.middleMan("12");                             WORKS
+      //ps.middleMan("a");                              WORKS
+
+      //ps.isCentered("abcdefg", "cde");                WORKS
+      //ps.isCentered("abcdefg", "abc");                WORKS
+      //ps.isCentered(null, "abc");                     WORKS
+      //ps.isCentered("abcd", "abc");                   WORKS
+      //ps.isCentered("abc", null);                     WORKS
+      //ps.isCentered("abcdefg", "cd");                 WORKS
+
+      //ps.countMe("I am an example sentence", 'e');
+      //ps.countMe(null, 'a');
+      //ps.countMe("abc$ def$", '$');
+
+      //ps.triplets("aaabbbccc");                       WORKS
+      //ps.triplets("aaaa");                            WORKS
+      //ps.triplets("abc");                             WORKS
+      //ps.triplets(null);                              WORKS
+
+      //ps.addMe("123 abc 123");                        WORKS
+      //ps.addMe("abcdefghijk");                        WORKS
+      //ps.addMe(null);                                 WORKS
+
       //ps.sequence("aaaabbb");
-      ps.intertwine("aaa", "bbbb");
+      //ps.intertwine("aaa", "bbbb");
       //ps.isPalindrome();
 
     }
@@ -43,7 +72,8 @@ public class ProblemSet5 {
 
     public String surroundMe(String in, String out) {
 
-      if (in == null || out == null) {
+      if (out == null || in == null) {
+        System.out.println(in);
         return in;
       }
 
@@ -51,6 +81,7 @@ public class ProblemSet5 {
          in = out.substring(0, 2) + in + out.substring(2, 4);
        }
 
+      System.out.println(in);
       return in;
 
     }
@@ -72,6 +103,7 @@ public class ProblemSet5 {
         text = text.substring(0, n) + text.substring(text.length()-n,text.length());
       }
 
+      System.out.println(text);
       return text;
 
     }
@@ -88,11 +120,10 @@ public class ProblemSet5 {
         return text;
       }
 
-      if (text.length() % 2 == 1) {
+      if (text.length() % 2 == 1 && text.length() > 2) {
         text = text.substring(0+(text.length()/2-1), 0+text.length()/2+2);
-        System.out.printf(text);
       }
-
+      System.out.println(text);
       return text;
 
     }
@@ -107,15 +138,18 @@ public class ProblemSet5 {
     public boolean isCentered(String text, String target) {
 
       if (text == null || target == null || text.length() % 2 == 0 || target.length() != 3) {
+        System.out.println("false");
         return false;
       }
 
       if (text.length() % 2 == 1) {
         text = text.substring(0+(text.length()/2-1), 0+text.length()/2+2);
         if (text.equals(target)) {
+          System.out.println("true");
           return true;
         }
       }
+      System.out.println("false");
       return false;
     }
 
@@ -143,6 +177,7 @@ public class ProblemSet5 {
             }
           }
         }
+      System.out.print("-1");
       return -1;
     }
 
@@ -158,6 +193,7 @@ public class ProblemSet5 {
       int i;
 
       if (text == null){
+        System.out.print("-1");
         return -1;
       }
       for (i = 0; i < text.length()-2; i++) {
@@ -185,6 +221,7 @@ public class ProblemSet5 {
       char iteration;
 
       if (text == null){
+        System.out.print("-1");
         return -1;
       }
 
@@ -197,6 +234,7 @@ public class ProblemSet5 {
         }
       }
 
+      System.out.print(total);
       return total;
 
     }
@@ -242,25 +280,8 @@ public class ProblemSet5 {
 
     public String intertwine(String a, String b) {
 
-      String combinedLength = a+b;
-      String combinedString = "";
-      int i;
 
-      if (a.length>b.length){
-
-      }
-
-
-      //THIS WORKS FOR IF THEY'RE THE SAME LENGTH. MAKE IT WORK IF THEY'RE DIFFERENT LENGTHS
-      for (i = 0; i < a.length(); i++) {
-        combinedString = combinedString + a.substring(i, i+1);
-        combinedString = combinedString + b.substring(i, i+1);
-      }
-
-      System.out.print(combinedString);
-
-
-      return combinedString;
+      return a;
 
     }
 
