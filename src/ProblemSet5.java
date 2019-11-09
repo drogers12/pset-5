@@ -21,44 +21,53 @@ public class ProblemSet5 {
     public static void main(String[] args) {
       ProblemSet5 ps = new ProblemSet5();
 
-      // ps.surroundMe("cde", "abfg");                  WORKS
-      // ps.surroundMe(null, "####");                   WORKS
-      // ps.surroundMe("abc", null);                    WORKS
-      // ps.surroundMe("abc", "123");                   WORKS
+      ps.surroundMe("cde", "abfg");
+      ps.surroundMe(null, "####");
+      ps.surroundMe("abc", null);
+      ps.surroundMe("abc", "123");
 
 
-      //ps.endsMeet("abcdefg", 2);                      WORKS
-      //ps.endsMeet(null, 2);                           WORKS
-      //ps.endsMeet("", 2);                             WORKS
-      //ps.endsMeet("abc", -1);                         WORKS
+      ps.endsMeet("abcdefg", 2);
+      ps.endsMeet(null, 2);
+      ps.endsMeet("", 2);
+      ps.endsMeet("abc", -1);
 
-      //ps.middleMan("abcdefg");                        WORKS
-      //ps.middleMan(null);                             WORKS
-      //ps.middleMan("12");                             WORKS
-      //ps.middleMan("a");                              WORKS
+      ps.middleMan("abcdefg");
+      ps.middleMan(null);
+      ps.middleMan("12");
+      ps.middleMan("a");
 
-      //ps.isCentered("abcdefg", "cde");                WORKS
-      //ps.isCentered("abcdefg", "abc");                WORKS
-      //ps.isCentered(null, "abc");                     WORKS
-      //ps.isCentered("abcd", "abc");                   WORKS
-      //ps.isCentered("abc", null);                     WORKS
-      //ps.isCentered("abcdefg", "cd");                 WORKS
+      ps.isCentered("abcdefg", "cde");
+      ps.isCentered("abcdefg", "abc");
+      ps.isCentered(null, "abc");
+      ps.isCentered("abcd", "abc");
+      ps.isCentered("abc", null);
+      ps.isCentered("abcdefg", "cd");
 
-      //ps.countMe("I am an example sentence", 'e');
-      //ps.countMe(null, 'a');
-      //ps.countMe("abc$ def$", '$');
+      ps.countMe("I am an example sentence", 'e');
+      ps.countMe(null, 'a');
+      ps.countMe("abc$ def$", '$');
 
-      //ps.triplets("aaabbbccc");                       WORKS
-      //ps.triplets("aaaa");                            WORKS
-      //ps.triplets("abc");                             WORKS
-      //ps.triplets(null);                              WORKS
+      ps.triplets("aaabbbccc");
+      ps.triplets("aaaa");
+      ps.triplets("abc");
+      ps.triplets(null);
 
-      //ps.addMe("123 abc 123");                        WORKS
-      //ps.addMe("abcdefghijk");                        WORKS
-      //ps.addMe(null);                                 WORKS
+      ps.addMe("123 abc 123");
+      ps.addMe("abcdefghijk");
+      ps.addMe(null);
 
-      //ps.sequence("aaaabbb");
-      //ps.intertwine("aaa", "bbbb");
+      ps.sequence("abbcccdddd");
+      ps.sequence("aAabBbBb");
+      ps.sequence("");
+      ps.sequence(null);
+
+
+      ps.intertwine("aceg", "bdfh");
+      ps.intertwine("abc", "12345");
+      ps.intertwine(null, "abcd");
+      ps.intertwine("abcd", null);
+      ps.intertwine(null, null);
 
       ps.isPalindrome("racecar");
       ps.isPalindrome("Madam");
@@ -76,7 +85,6 @@ public class ProblemSet5 {
     public String surroundMe(String in, String out) {
 
       if (out == null || in == null) {
-        System.out.println(in);
         return in;
       }
 
@@ -84,7 +92,6 @@ public class ProblemSet5 {
          in = out.substring(0, 2) + in + out.substring(2, 4);
        }
 
-      System.out.println(in);
       return in;
 
     }
@@ -106,7 +113,6 @@ public class ProblemSet5 {
         text = text.substring(0, n) + text.substring(text.length()-n,text.length());
       }
 
-      System.out.println(text);
       return text;
 
     }
@@ -126,7 +132,7 @@ public class ProblemSet5 {
       if (text.length() % 2 == 1 && text.length() > 2) {
         text = text.substring(0+(text.length()/2-1), 0+text.length()/2+2);
       }
-      System.out.println(text);
+
       return text;
 
     }
@@ -141,18 +147,15 @@ public class ProblemSet5 {
     public boolean isCentered(String text, String target) {
 
       if (text == null || target == null || text.length() % 2 == 0 || target.length() != 3) {
-        System.out.println("false");
         return false;
       }
 
       if (text.length() % 2 == 1) {
         text = text.substring(0+(text.length()/2-1), 0+text.length()/2+2);
         if (text.equals(target)) {
-          System.out.println("true");
           return true;
         }
       }
-      System.out.println("false");
       return false;
     }
 
@@ -162,27 +165,27 @@ public class ProblemSet5 {
      * Given a string and a character, compute the number of words that end in suffix.
      */
 
-    public int countMe(String text, char suffix) {
+     public int countMe(String text, char suffix) {
 
-      int i;
-      int count = 0;
+         int count = 0;
 
-      if (text == null) {
-        return -1;
-      }
+         if (text != null && Character.isLetter(suffix) && ((suffix >= 'a' && suffix <= 'z')
+           || (suffix >= 'A' && suffix <= 'Z'))) {
 
-      Character.toString(suffix);
+             for (int i = 0; i < text.length(); i++) {
+                 if (text.charAt(i) == suffix && (i == text.length() - 1 || text.charAt(i+1) == ' ')) {
+                     count++;
+                 }
+             }
 
-        for (i = 0; i < text.length(); i++) {
-          if (Character.isSpaceChar(text.charAt(i))) {
-            if (text.substring(i-1,i).equals(suffix)) {
-              System.out.print("hi");
-            }
-          }
-        }
-      System.out.print("-1");
-      return -1;
-    }
+         } else {
+             count = -1;
+         }
+
+
+         return count;
+
+     }
 
     /*
      * Exercise 6.
@@ -196,7 +199,6 @@ public class ProblemSet5 {
       int i;
 
       if (text == null){
-        System.out.print("-1");
         return -1;
       }
       for (i = 0; i < text.length()-2; i++) {
@@ -204,7 +206,6 @@ public class ProblemSet5 {
           count++;
         }
       }
-      System.out.print(count);
       return count;
 
     }
@@ -224,7 +225,6 @@ public class ProblemSet5 {
       char iteration;
 
       if (text == null){
-        System.out.print("-1");
         return -1;
       }
 
@@ -237,7 +237,6 @@ public class ProblemSet5 {
         }
       }
 
-      System.out.print(total);
       return total;
 
     }
@@ -248,31 +247,45 @@ public class ProblemSet5 {
      * Given a string, compute the length of the longest sequence.
      */
 
-    public long sequence(String text) {
+     public long sequence(String text) {
 
-      int count = 0;
-      int i;
-      text = text + " ";
+         long record = 1;
+         long sequenceLength = 1;
+         char first = ' ';
+         char second = ' ';
 
-      if (text == null){
-        return -1;
-      }
+         if (text != null) {
 
-      for (i = 0; i < text.length()-1; i++) {
+             for (int i = 1; i < text.length(); i++) {
 
-        if (text.substring(i, i+1).equals(text.substring(i+1, i+2))) {
-          count += 1;
-        }else{
-          count = 0;
-        }
+                 first = text.charAt(i-1);
+                 second = text.charAt(i);
 
-      }
+                 if (first == second) {
 
-      System.out.print(count);
+                     sequenceLength += 1;
 
-      return count;
+                     if (sequenceLength > record) {
+                         record = sequenceLength;
+                     }
 
-    }
+                 } else {
+                     sequenceLength = 1;
+                 }
+
+             }
+
+             if (text.length() == 0) {
+                 record = 0;
+             }
+
+         } else {
+             record = -1;
+         }
+
+         return record;
+
+     }
 
     /*
      * Exercise 9.
@@ -283,8 +296,39 @@ public class ProblemSet5 {
 
     public String intertwine(String a, String b) {
 
+        long record = 0;
+        // boolean isARecord = false;
+        String intertwined = "";
 
-      return a;
+        if (a != null && b != null) {
+
+            if (a.length() > b.length()) {
+
+                record = a.length();
+                // isARecord = true;
+
+            } else {
+                record = b.length();
+            }
+
+            for (int i = 0;i < record; i++) {
+                if (i < a.length() && i < b.length()) {
+
+                    intertwined += String.valueOf(a.charAt(i));
+                    intertwined += String.valueOf(b.charAt(i));
+
+                } else if (i < a.length()) {
+                    intertwined += String.valueOf(a.charAt(i));
+                } else if (i < b.length()) {
+                    intertwined += String.valueOf(b.charAt(i));
+                }
+            }
+
+        } else {
+            intertwined = null;
+        }
+
+        return intertwined;
 
     }
 
@@ -295,25 +339,24 @@ public class ProblemSet5 {
      */
 
     public boolean isPalindrome(String text) {
+        boolean isPalindrome = false;
+        String reverseString = "";
 
-      if (text == null){
-        return false;
-      }
+        if (text != null) {
 
+            for (int i = text.length()-1 ; i >= 0; i--) {
+                reverseString += String.valueOf(text.charAt(i));
+            }
 
-      String reverseText = "";
-      String tempCharacter = "";
-      int i;
+            if (text.equals(reverseString)) {
+                isPalindrome = true;
+            }
 
-      for (i = text.length() -1; i >=0; i--) {
-          reverseText = reverseText + text.charAt(i);
-      }
-
-      System.out.println(reverseText);
-        if (reverseText == text) {
-          System.out.println("true");
-          return true;
+        } else {
+            isPalindrome = false;
         }
-        return true;
+
+        return isPalindrome;
+
     }
 }
